@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agence El Amir - الحل الأسرع لشحن هاتفك أينما كنت</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span data-ar="Agence El Amir" data-fr="Agence El Amir">Agence El Amir</span>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="#home" data-ar="الرئيسية" data-fr="Accueil">الرئيسية</a></li>
+                    <li><a href="#services" data-ar="الخدمات" data-fr="Services">الخدمات</a></li>
+                    <li><a href="#contact" data-ar="اتصل بنا" data-fr="Contact">اتصل بنا</a></li>
+                    <li><a href="#" onclick="openAdminPanel()" id="adminLink" style="display: none;" data-ar="لوحة التحكم" data-fr="Panneau Admin">لوحة التحكم</a></li>
+                </ul>
+                
+                <div class="nav-controls">
+                    <!-- User Controls (when not logged in) -->
+                    <div id="userControls" class="user-controls">
+                        <button class="btn btn-outline" onclick="openLoginModal()" data-ar="دخول" data-fr="Connexion">دخول</button>
+                        <button class="btn btn-primary" onclick="openRegisterModal()" data-ar="تسجيل" data-fr="S'inscrire">تسجيل</button>
+                    </div>
+                    
+                    <!-- User Menu (when logged in) -->
+                    <div id="userMenu" class="user-menu" style="display: none;">
+                        <div class="user-info">
+                            <span id="userName">المستخدم</span>
+                            <span class="balance" id="userBalance">0 دج</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="openAccountModal()" data-ar="حسابي" data-fr="Mon compte">حسابي</button>
+                        <button class="btn btn-outline" onclick="logout()" data-ar="خروج" data-fr="Déconnexion">خروج</button>
+                    </div>
+                    
+                    <!-- Language Toggle -->
+                    <div class="language-toggle">
+                        <button class="lang-btn active" data-lang="ar">عربي</button>
+                        <button class="lang-btn" data-lang="fr">Français</button>
+                    </div>
+                    
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    
+                    <!-- Mobile Menu -->
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span data-ar="مرحباً بك في" data-fr="Bienvenue chez">مرحباً بك في</span>
+                        <span class="highlight">Agence El Amir</span>
+                    </h1>
+                    <p class="hero-subtitle" data-ar="الحل الأسرع لشحن هاتفك أينما كنت" data-fr="La solution la plus rapide pour recharger votre téléphone où que vous soyez">الحل الأسرع لشحن هاتفك أينما كنت</p>
+                    <p class="hero-description" data-ar="منصة موثوقة لشحن أرصدة الهاتف والإنترنت مع نظام شحن فوري وخدمة عملاء متميزة" data-fr="Plateforme fiable pour recharger les crédits téléphoniques et internet avec un système de recharge instantané et un service client exceptionnel">منصة موثوقة لشحن أرصدة الهاتف والإنترنت مع نظام شحن فوري وخدمة عملاء متميزة</p>
+                    
+                    <div class="hero-buttons">
+                        <button class="btn btn-secondary" onclick="scrollToServices()" data-ar="ابدأ الآن" data-fr="Commencer">ابدأ الآن</button>
+                        <button class="btn btn-outline" onclick="openRegisterModal('trader')" data-ar="انضم كتاجر" data-fr="Rejoindre comme commerçant">انضم كتاجر</button>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label" data-ar="خدمة مستمرة" data-fr="Service continu">خدمة مستمرة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label" data-ar="شبكات مدعومة" data-fr="Réseaux supportés">شبكات مدعومة</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label" data-ar="آمن وموثوق" data-fr="Sûr et fiable">آمن وموثوق</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="floating-cards">
+                        <div class="card-float card-1">
+                            <i class="fas fa-signal" style="color: #1e3a8a;"></i>
+                            <span>Mobilis</span>
+                        </div>
+                        <div class="card-float card-2">
+                            <i class="fas fa-chart-bar" style="color: #dc2626;"></i>
+                            <span>Djezzy</span>
+                        </div>
+                        <div class="card-float card-3">
+                            <i class="fas fa-wifi" style="color: #ea580c;"></i>
+                            <span>Ooredoo</span>
+                        </div>
+                        <div class="card-float card-4">
+                            <i class="fas fa-globe" style="color: #0891b2;"></i>
+                            <span>Idoom</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-ar="خدماتنا للأفراد" data-fr="Nos services pour particuliers">خدماتنا للأفراد</h2>
+                <p data-ar="يجب شحن حسابك أولاً عبر التحويل البنكي، ثم استخدام رصيدك لشراء الخدمات (أقل مبلغ 100 دج + عمولة 10 دج)" data-fr="Vous devez d'abord recharger votre compte par virement bancaire, puis utiliser votre solde pour acheter des services (min 100 DA + commission 10 DA)">يجب شحن حسابك أولاً عبر التحويل البنكي، ثم استخدام رصيدك لشراء الخدمات (أقل مبلغ 100 دج + عمولة 10 دج)</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Mobilis Service -->
+                <div class="service-card" onclick="openRechargeModal('mobilis', 'assets/mobilis-logo.png', 'شحن موبيليس', 'Recharge Mobilis')">
+                    <div class="service-icon">
+                        <i class="fas fa-signal" style="color: #1e3a8a; font-size: 2.5rem;"></i>
+                    </div>
+                    <h3 data-ar="شحن موبيليس" data-fr="Recharge Mobilis">شحن موبيليس</h3>
+                    <p data-ar="شحن سريع وآمن لشبكة موبيليس" data-fr="Recharge rapide et sécurisée pour Mobilis">شحن سريع وآمن لشبكة موبيليس</p>
+                    <div class="service-features">
+                        <div class="feature" data-ar="✅ فوري" data-fr="✅ Instantané">✅ فوري</div>
+                        <div class="feature" data-ar="✅ آمن" data-fr="✅ Sécurisé">✅ آمن</div>
+                        <div class="feature" data-ar="✅ أقل مبلغ 100دج + 10دج عمولة" data-fr="✅ Min 100DA + 10DA commission">✅ أقل مبلغ 100دج + 10دج عمولة</div>
+                    </div>
+                    <button class="btn btn-recharge" data-ar="شحن الآن" data-fr="Recharger">شحن الآن</button>
+                </div>
+
+                <!-- Djezzy Service -->
+                <div class="service-card" onclick="openRechargeModal('djezzy', 'assets/djezzy-logo.png', 'شحن جيزي', 'Recharge Djezzy')">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar" style="color: #dc2626; font-size: 2.5rem;"></i>
+                    </div>
+                    <h3 data-ar="شحن جيزي" data-fr="Recharge Djezzy">شحن جيزي</h3>
+                    <p data-ar="تعبئة أرصدة جيزي بسهولة" data-fr="Recharge facile des crédits Djezzy">تعبئة أرصدة جيزي بسهولة</p>
+                    <div class="service-features">
+                        <div class="feature" data-ar="✅ سريع" data-fr="✅ Rapide">✅ سريع</div>
+                        <div class="feature" data-ar="✅ موثوق" data-fr="✅ Fiable">✅ موثوق</div>
+                        <div class="feature" data-ar="✅ أقل مبلغ 100دج + 10دج عمولة" data-fr="✅ Min 100DA + 10DA commission">✅ أقل مبلغ 100دج + 10دج عمولة</div>
+                    </div>
+                    <button class="btn btn-recharge" data-ar="شحن الآن" data-fr="Recharger">شحن الآن</button>
+                </div>
+
+                <!-- Ooredoo Service -->
+                <div class="service-card" onclick="openRechargeModal('ooredoo', 'assets/ooredoo-logo.png', 'شحن أوريدو', 'Recharge Ooredoo')">
+                    <div class="service-icon">
+                        <i class="fas fa-wifi" style="color: #ea580c; font-size: 2.5rem;"></i>
+                    </div>
+                    <h3 data-ar="شحن أوريدو" data-fr="Recharge Ooredoo">شحن أوريدو</h3>
+                    <p data-ar="خدمة شحن أوريدو الموثوقة" data-fr="Service de recharge Ooredoo fiable">خدمة شحن أوريدو الموثوقة</p>
+                    <div class="service-features">
+                        <div class="feature" data-ar="✅ مضمون" data-fr="✅ Garanti">✅ مضمون</div>
+                        <div class="feature" data-ar="✅ سهل" data-fr="✅ Facile">✅ سهل</div>
+                        <div class="feature" data-ar="✅ أقل مبلغ 100دج + 10دج عمولة" data-fr="✅ Min 100DA + 10DA commission">✅ أقل مبلغ 100دج + 10دج عمولة</div>
+                    </div>
+                    <button class="btn btn-recharge" data-ar="شحن الآن" data-fr="Recharger">شحن الآن</button>
+                </div>
+
+                <!-- Idoom Service -->
+                <div class="service-card" onclick="openRechargeModal('idoom', 'assets/idoom-logo.png', 'بطاقات Idoom ADSL', 'Cartes Idoom ADSL')">
+                    <div class="service-icon">
+                        <i class="fas fa-globe" style="color: #0891b2; font-size: 2.5rem;"></i>
+                    </div>
+                    <h3 data-ar="بطاقات Idoom ADSL" data-fr="Cartes Idoom ADSL">بطاقات Idoom ADSL</h3>
+                    <p data-ar="بيع بطاقات الإنترنت Idoom" data-fr="Vente de cartes internet Idoom">بيع بطاقات الإنترنت Idoom</p>
+                    <div class="service-features">
+                        <div class="feature" data-ar="✅ جودة عالية" data-fr="✅ Haute qualité">✅ جودة عالية</div>
+                        <div class="feature" data-ar="✅ متوفر دائماً" data-fr="✅ Toujours disponible">✅ متوفر دائماً</div>
+                        <div class="feature" data-ar="✅ أقل مبلغ 100دج + 10دج عمولة" data-fr="✅ Min 100DA + 10DA commission">✅ أقل مبلغ 100دج + 10دج عمولة</div>
+                    </div>
+                    <button class="btn btn-recharge" data-ar="شراء الآن" data-fr="Acheter">شراء الآن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-ar="اتصل بنا" data-fr="Contactez-nous">اتصل بنا</h2>
+                <p data-ar="نحن هنا لخدمتك على مدار الساعة" data-fr="Nous sommes là pour vous servir 24h/24">نحن هنا لخدمتك على مدار الساعة</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4 data-ar="الهاتف" data-fr="Téléphone">الهاتف</h4>
+                            <p>+213 562 35 99 97</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4 data-ar="واتساب" data-fr="WhatsApp">واتساب</h4>
+                            <p>+213 562 35 99 97</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4 data-ar="البريد الإلكتروني" data-fr="Email">البريد الإلكتروني</h4>
+                            <p>info@agence-elamir.dz</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4 data-ar="ساعات العمل" data-fr="Heures d'ouverture">ساعات العمل</h4>
+                            <p data-ar="24/7 خدمة مستمرة" data-fr="24/7 service continu">24/7 خدمة مستمرة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <h4 data-ar="الدعم الفني" data-fr="Support technique">الدعم الفني</h4>
+                            <p data-ar="دعم فوري للتجار والعملاء" data-fr="Support immédiat pour commerçants et clients">دعم فوري للتجار والعملاء</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 data-ar="أرسل رسالة" data-fr="Envoyer un message">أرسل رسالة</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label data-ar="الاسم:" data-fr="Nom:">الاسم:</label>
+                            <input type="text" name="name" required data-ar-placeholder="اسمك الكامل" data-fr-placeholder="Votre nom complet" placeholder="اسمك الكامل">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-ar="البريد الإلكتروني:" data-fr="Email:">البريد الإلكتروني:</label>
+                            <input type="email" name="email" required data-ar-placeholder="example@email.com" data-fr-placeholder="exemple@email.com" placeholder="example@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-ar="رقم الهاتف:" data-fr="Téléphone:">رقم الهاتف:</label>
+                            <input type="tel" name="phone" data-ar-placeholder="0555123456" data-fr-placeholder="0555123456" placeholder="0555123456">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label data-ar="الرسالة:" data-fr="Message:">الرسالة:</label>
+                            <textarea name="message" rows="5" required data-ar-placeholder="اكتب رسالتك هنا..." data-fr-placeholder="Écrivez votre message ici..." placeholder="اكتب رسالتك هنا..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" data-ar="إرسال الرسالة" data-fr="Envoyer le message">إرسال الرسالة</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Agence El Amir</span>
+                    </div>
+                    <p data-ar="منصة موثوقة لشحن أرصدة الهاتف والإنترنت مع خدمة عملاء متميزة على مدار الساعة" data-fr="Plateforme fiable pour recharger les crédits téléphoniques et internet avec un service client exceptionnel 24h/24">منصة موثوقة لشحن أرصدة الهاتف والإنترنت مع خدمة عملاء متميزة على مدار الساعة</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-ar="الخدمات" data-fr="Services">الخدمات</h4>
+                    <ul>
+                        <li><a href="#" data-ar="شحن موبيليس" data-fr="Recharge Mobilis">شحن موبيليس</a></li>
+                        <li><a href="#" data-ar="شحن جيزي" data-fr="Recharge Djezzy">شحن جيزي</a></li>
+                        <li><a href="#" data-ar="شحن أوريدو" data-fr="Recharge Ooredoo">شحن أوريدو</a></li>
+                        <li><a href="#" data-ar="بطاقات Idoom" data-fr="Cartes Idoom">بطاقات Idoom</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-ar="روابط مهمة" data-fr="Liens importants">روابط مهمة</h4>
+                    <ul>
+                        <li><a href="#" data-ar="سياسة الخصوصية" data-fr="Politique de confidentialité">سياسة الخصوصية</a></li>
+                        <li><a href="#" data-ar="شروط الاستخدام" data-fr="Conditions d'utilisation">شروط الاستخدام</a></li>
+                        <li><a href="#" data-ar="الأسئلة الشائعة" data-fr="FAQ">الأسئلة الشائعة</a></li>
+                        <li><a href="#" data-ar="الدعم الفني" data-fr="Support technique">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-ar="معلومات الاتصال" data-fr="Informations de contact">معلومات الاتصال</h4>
+                    <ul>
+                        <li data-ar="الهاتف: +213 XXX XXX XXX" data-fr="Téléphone: +213 XXX XXX XXX">الهاتف: +213 XXX XXX XXX</li>
+                        <li>Email: info@agence-elamir.dz</li>
+                        <li data-ar="خدمة 24/7" data-fr="Service 24/7">خدمة 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-ar="© 2024 Agence El Amir. جميع الحقوق محفوظة." data-fr="© 2024 Agence El Amir. Tous droits réservés.">© 2024 Agence El Amir. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-ar="تسجيل الدخول" data-fr="Connexion">تسجيل الدخول</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label data-ar="البريد الإلكتروني:" data-fr="Email:">البريد الإلكتروني:</label>
+                    <input type="email" id="loginEmail" required data-ar-placeholder="example@email.com" data-fr-placeholder="exemple@email.com" placeholder="example@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label data-ar="كلمة المرور:" data-fr="Mot de passe:">كلمة المرور:</label>
+                    <input type="password" id="loginPassword" required data-ar-placeholder="كلمة المرور" data-fr-placeholder="Mot de passe" placeholder="كلمة المرور">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" data-ar="دخول" data-fr="Se connecter">دخول</button>
+                
+                <div class="auth-switch">
+                    <span data-ar="ليس لديك حساب؟" data-fr="Vous n'avez pas de compte?">ليس لديك حساب؟</span>
+                    <a href="#" onclick="switchToRegister()" data-ar="سجل الآن" data-fr="Inscrivez-vous maintenant">سجل الآن</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-ar="إنشاء حساب جديد" data-fr="Créer un nouveau compte">إنشاء حساب جديد</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label data-ar="نوع الحساب:" data-fr="Type de compte:">نوع الحساب:</label>
+                    <select id="accountType">
+                        <option value="individual" data-ar="فرد" data-fr="Particulier">فرد</option>
+                        <option value="trader" data-ar="تاجر" data-fr="Commerçant">تاجر</option>
+                    </select>
+                </div>
+                
+                <div id="traderInfo" class="info-box trader-info" style="display: none;">
+                    <h4 data-ar="🎁 مكافأة التاجر الخاصة" data-fr="🎁 Bonus spécial commerçant">🎁 مكافأة التاجر الخاصة</h4>
+                    <p data-ar="ستحصل على 10,000 دج في رصيدك فور التسجيل كتاجر + شحن حسابك بمبلغ 50,000 دج!" data-fr="Vous recevrez 10,000 DA dans votre solde après inscription comme commerçant + dépôt de 50,000 DA!">ستحصل على 10,000 دج في رصيدك فور التسجيل كتاجر + شحن حسابك بمبلغ 50,000 دج!</p>
+                </div>
+                
+                <div class="form-group">
+                    <label data-ar="الاسم الكامل:" data-fr="Nom complet:">الاسم الكامل:</label>
+                    <input type="text" id="registerName" required data-ar-placeholder="اسمك الكامل" data-fr-placeholder="Votre nom complet" placeholder="اسمك الكامل">
+                </div>
+                
+                <div class="form-group">
+                    <label data-ar="البريد الإلكتروني:" data-fr="Email:">البريد الإلكتروني:</label>
+                    <input type="email" id="registerEmail" required data-ar-placeholder="example@email.com" data-fr-placeholder="exemple@email.com" placeholder="example@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label data-ar="رقم الهاتف:" data-fr="Numéro de téléphone:">رقم الهاتف:</label>
+                    <input type="tel" id="registerPhone" required data-ar-placeholder="0555123456" data-fr-placeholder="0555123456" placeholder="0555123456">
+                </div>
+                
+                <div class="form-group">
+                    <label data-ar="كلمة المرور:" data-fr="Mot de passe:">كلمة المرور:</label>
+                    <input type="password" id="registerPassword" required data-ar-placeholder="كلمة المرور" data-fr-placeholder="Mot de passe" placeholder="كلمة المرور">
+                </div>
+                
+                <div class="form-group">
+                    <label data-ar="تأكيد كلمة المرور:" data-fr="Confirmer le mot de passe:">تأكيد كلمة المرور:</label>
+                    <input type="password" id="confirmPassword" required data-ar-placeholder="تأكيد كلمة المرور" data-fr-placeholder="Confirmer le mot de passe" placeholder="تأكيد كلمة المرور">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" data-ar="إنشاء الحساب" data-fr="Créer le compte">إنشاء الحساب</button>
+                
+                <div class="auth-switch">
+                    <span data-ar="لديك حساب بالفعل؟" data-fr="Vous avez déjà un compte?">لديك حساب بالفعل؟</span>
+                    <a href="#" onclick="switchToLogin()" data-ar="سجل الدخول" data-fr="Connectez-vous">سجل الدخول</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Recharge Modal -->
+    <div id="rechargeModal" class="modal recharge-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>
+                    <img id="selectedOperatorLogo" class="operator-logo" src="" alt="" style="display: none;">
+                    <span id="selectedOperatorName" data-ar="شحن" data-fr="Recharge">شحن</span>
+                </h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="rechargeForm" class="recharge-form">
+                <div class="form-group">
+                    <label data-ar="رقم الهاتف:" data-fr="Numéro de téléphone:">رقم الهاتف:</label>
+                    <input type="tel" id="phoneNumber" required data-ar-placeholder="0555123456" data-fr-placeholder="0555123456" placeholder="0555123456">
+                </div>
+                
+                <div class="form-group">
+                    <label data-ar="مبلغ الشحن (دج):" data-fr="Montant de recharge (DA):">مبلغ الشحن (دج):</label>
+                    <input type="number" id="rechargeAmount" min="100" required data-ar-placeholder="100" data-fr-placeholder="100" placeholder="100">
+                    <small data-ar="الحد الأدنى: 100 دج" data-fr="Minimum: 100 DA">الحد الأدنى: 100 دج</small>
+                </div>
+                
+                <div class="recharge-summary">
+                    <div class="summary-row">
+                        <span data-ar="المبلغ:" data-fr="Montant:">المبلغ:</span>
+                        <span id="summaryAmount">0 دج</span>
+                    </div>
+                    <div class="summary-row">
+                        <span data-ar="رسوم الخدمة:" data-fr="Frais de service:">رسوم الخدمة:</span>
+                        <span id="serviceFee">10 دج</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span data-ar="المجموع:" data-fr="Total:">المجموع:</span>
+                        <span id="totalAmount">10 دج</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" data-ar="شحن الآن" data-fr="Recharger maintenant">شحن الآن</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Account Modal (for logged in users) -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-ar="حسابي" data-fr="Mon compte">حسابي</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="auth-form">
+                <div class="user-account-info">
+                    <div class="account-balance">
+                        <h4 data-ar="رصيدك الحالي" data-fr="Votre solde actuel">رصيدك الحالي</h4>
+                        <div class="balance-display">
+                            <span id="accountBalance">0</span>
+                            <span data-ar="دج" data-fr="DA">دج</span>
+                        </div>
+                    </div>
+                    
+                    <div class="account-actions">
+                        <button class="btn btn-secondary" onclick="showPaymentSection()" data-ar="شحن الرصيد" data-fr="Recharger le solde">شحن الرصيد</button>
+                    </div>
+                </div>
+                
+                <!-- Payment Section (only visible when user clicks "شحن الرصيد") -->
+                <div id="paymentSection" class="payment-section" style="display: none;">
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <i class="fas fa-credit-card"></i>
+                            <h3 data-ar="معلومات الحساب البنكي" data-fr="Informations compte bancaire">معلومات الحساب البنكي</h3>
+                        </div>
+                        
+                        <div class="payment-details">
+                            <div class="detail-item">
+                                <span class="label" data-ar="رقم الحساب:" data-fr="Numéro de compte:">رقم الحساب:</span>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span class="value" id="accountNumber">0026861217cle81</span>
+                                    <button class="copy-btn" title="نسخ">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <span class="label" data-ar="اسم صاحب الحساب:" data-fr="Nom du titulaire:">اسم صاحب الحساب:</span>
+                                <span class="value">Oultache Amirouche</span>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <span class="label" data-ar="البنك:" data-fr="Banque:">البنك:</span>
+                                <span class="value" data-ar="CCP الجزائر" data-fr="CCP Algérie">CCP الجزائر</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-card">
+                        <div class="payment-header">
+                            <i class="fas fa-upload"></i>
+                            <h3 data-ar="رفع وصل الدفع" data-fr="Télécharger reçu de paiement">رفع وصل الدفع</h3>
+                        </div>
+                        
+                        <div class="upload-area" id="uploadArea">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p data-ar="اسحب وأفلت الوصل هنا أو انقر للاختيار" data-fr="Glissez-déposez le reçu ici ou cliquez pour sélectionner">اسحب وأفلت الوصل هنا أو انقر للاختيار</p>
+                            <small data-ar="الحد الأقصى: 5 ميجابايت (JPG, PNG, PDF)" data-fr="Maximum: 5 MB (JPG, PNG, PDF)">الحد الأقصى: 5 ميجابايت (JPG, PNG, PDF)</small>
+                        </div>
+                        <input type="file" id="receiptFile" accept="image/*,.pdf" style="display: none;">
+                        
+                        <div class="payment-instructions">
+                            <h4 data-ar="تعليمات الدفع:" data-fr="Instructions de paiement:">تعليمات الدفع:</h4>
+                            <ol>
+                                <li data-ar="قم بتحويل المبلغ إلى الحساب أعلاه" data-fr="Transférez le montant vers le compte ci-dessus">قم بتحويل المبلغ إلى الحساب أعلاه</li>
+                                <li data-ar="احتفظ بوصل التحويل" data-fr="Conservez le reçu de transfert">احتفظ بوصل التحويل</li>
+                                <li data-ar="ارفع صورة الوصل هنا" data-fr="Téléchargez l'image du reçu ici">ارفع صورة الوصل هنا</li>
+                                <li data-ar="سيتم تفعيل رصيدك خلال 24 ساعة" data-fr="Votre solde sera activé dans les 24 heures">سيتم تفعيل رصيدك خلال 24 ساعة</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content admin-panel">
+            <div class="modal-header">
+                <h2 data-ar="لوحة تحكم المدير" data-fr="Panneau d'administration">لوحة تحكم المدير</h2>
+                <span class="close" onclick="closeAdminPanel()">&times;</span>
+            </div>
+            
+            <div class="admin-tabs">
+                <button class="tab-btn active" onclick="showAdminTab('receipts')" data-ar="الوصولات" data-fr="Reçus">الوصولات</button>
+                <button class="tab-btn" onclick="showAdminTab('users')" data-ar="المستخدمين" data-fr="Utilisateurs">المستخدمين</button>
+                <button class="tab-btn" onclick="showAdminTab('orders')" data-ar="الطلبات" data-fr="Commandes">الطلبات</button>
+                <button class="tab-btn" onclick="showAdminTab('support')" data-ar="الدعم" data-fr="Support">الدعم</button>
+                <button class="tab-btn" onclick="showAdminTab('stats')" data-ar="الإحصائيات" data-fr="Statistiques">الإحصائيات</button>
+            </div>
+            
+            <!-- Receipts Tab -->
+            <div id="receiptsTab" class="admin-tab active">
+                <div class="tab-header">
+                    <h3 data-ar="وصولات الدفع المعلقة" data-fr="Reçus de paiement en attente">وصولات الدفع المعلقة</h3>
+                    <span class="badge" id="pendingReceiptsCount">0</span>
+                </div>
+                <div class="receipts-list" id="receiptsList">
+                    <!-- سيتم ملؤها بـ JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Users Tab -->
+            <div id="usersTab" class="admin-tab">
+                <div class="tab-header">
+                    <h3 data-ar="إدارة المستخدمين" data-fr="Gestion des utilisateurs">إدارة المستخدمين</h3>
+                    <div class="search-box">
+                        <input type="text" id="userSearch" placeholder="البحث عن مستخدم..." data-ar="البحث عن مستخدم..." data-fr="Rechercher un utilisateur...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="users-list" id="usersList">
+                    <!-- سيتم ملؤها بـ JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Orders Tab -->
+            <div id="ordersTab" class="admin-tab">
+                <div class="tab-header">
+                    <h3 data-ar="طلبات الشحن" data-fr="Commandes de recharge">طلبات الشحن</h3>
+                    <select id="orderFilter">
+                        <option value="all" data-ar="جميع الطلبات" data-fr="Toutes les commandes">جميع الطلبات</option>
+                        <option value="today" data-ar="اليوم" data-fr="Aujourd'hui">اليوم</option>
+                        <option value="week" data-ar="هذا الأسبوع" data-fr="Cette semaine">هذا الأسبوع</option>
+                        <option value="month" data-ar="هذا الشهر" data-fr="Ce mois">هذا الشهر</option>
+                    </select>
+                </div>
+                <div class="orders-list" id="ordersList">
+                    <!-- سيتم ملؤها بـ JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Support Tab -->
+            <div id="supportTab" class="admin-tab">
+                <div class="tab-header">
+                    <h3 data-ar="رسائل الدعم" data-fr="Messages de support">رسائل الدعم</h3>
+                    <span class="badge" id="unreadMessagesCount">0</span>
+                </div>
+                <div class="support-messages" id="supportMessages">
+                    <!-- سيتم ملؤها بـ JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Statistics Tab -->
+            <div id="statsTab" class="admin-tab">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalUsers">0</h3>
+                            <p data-ar="إجمالي المستخدمين" data-fr="Total utilisateurs">إجمالي المستخدمين</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalOrders">0</h3>
+                            <p data-ar="إجمالي الطلبات" data-fr="Total commandes">إجمالي الطلبات</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalRevenue">0 دج</h3>
+                            <p data-ar="إجمالي الإيرادات" data-fr="Revenus totaux">إجمالي الإيرادات</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="todayOrders">0</h3>
+                            <p data-ar="طلبات اليوم" data-fr="Commandes aujourd'hui">طلبات اليوم</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
